@@ -24,12 +24,9 @@ contract UniswapV2Factory is IUniswapV2Factory {
         require(tokenA != tokenB, 'UniswapV2: IDENTICAL_TOKENIDS');
         (uint token0, uint token1) = tokenA < tokenB ? (tokenA, tokenB) : (tokenB, tokenA);
         require(getPair[token0][token1] == address(0), 'UniswapV2: PAIR_EXISTS'); // single check is sufficient
-        bytes memory bytecode = type(UniswapV2Pair).creationCode;
-        bytes32 salt = keccak256(abi.encodePacked(token0, token1));
-        assembly {
-            pair := create2(0, add(bytecode, 32), mload(bytecode), salt)
-        }
-        IUniswapV2Pair(pair).initialize(token0, token1);
+        UniswapV2Pair pairInstance = new UniswapV2Pair();
+        pair = address(pairInstance);
+        pairInstance.initialize(token0, token1);
         getPair[token0][token1] = pair;
         getPair[token1][token0] = pair; // populate mapping in the reverse direction
         allPairs.push(pair);

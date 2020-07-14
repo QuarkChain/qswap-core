@@ -22,3 +22,15 @@ The following assumes the use of `node@>=10`.
 ## Run Tests
 
 `yarn test`
+
+## Deploy Contracts
+
+```
+vi .env
+# PK = YOUR_PRIVATE_KEY
+# FULLSHARDKEY = YOUR_FULLSHARD_KEY
+```
+
+```
+node migrations/deploy_factory.js
+```
