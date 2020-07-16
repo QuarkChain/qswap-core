@@ -34,6 +34,8 @@ contract UniswapV2Pair is IUniswapV2Pair, UniswapV2ERC20, AllowNonDefaultNativeT
         unlocked = 1;
     }
 
+    function () external payable allowToken {}
+
     function getReserves() public view returns (uint112 _reserve0, uint112 _reserve1, uint32 _blockTimestampLast) {
         _reserve0 = reserve0;
         _reserve1 = reserve1;
