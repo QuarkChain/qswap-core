@@ -1,7 +1,7 @@
 {
   "name": "@jishankai/uniswap-v2-core",
   "description": "Core contracts for the QuarkChain UniswapV2 protocol",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "homepage": "https://quarkchain.io",
   "repository": {
     "type": "git",
